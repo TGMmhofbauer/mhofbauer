@@ -7,6 +7,9 @@ mhofbauer
 dmelichar
 =========
 
+==========
+KOCSI
+==========
 Learning to use git are:
 Firstname 	Daniel
 Lastname	Melichar
