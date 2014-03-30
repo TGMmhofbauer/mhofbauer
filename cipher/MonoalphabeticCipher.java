@@ -30,6 +30,7 @@ public abstract class MonoalphabeticCipher implements Cipher {
 	public String encrypt(String text) {
 
 		StringBuilder sb = new StringBuilder();
+		text = text.toLowerCase();
 		
 		for(int i = 0; i < text.length(); i++) {
 			int index = TestCipher.arrayToList(STANDARD_ALPHABET).indexOf(text.charAt(i));
@@ -52,9 +53,11 @@ public abstract class MonoalphabeticCipher implements Cipher {
 			int index = TestCipher.arrayToList(secretAlphabet).indexOf(text.charAt(i));
 			if(index != -1) {
 				sb.append(STANDARD_ALPHABET[index]);
+			} else {
+				sb.append(text.indexOf(i));
 			}
-		return sb.toString();
 		}
+		return sb.toString();
 	}
 	
 	/**
@@ -68,6 +71,9 @@ public abstract class MonoalphabeticCipher implements Cipher {
 		}
 		else if(!TestCipher.arrayToList(alphabet.toCharArray()).containsAll(TestCipher.arrayToList(STANDARD_ALPHABET))){ 
 			throw new IllegalArgumentException("Secret Alphabet has to contain all letters exactly once");
+		}
+		else{
+			secretAlphabet = alphabet.toLowerCase().toCharArray();
 		}
 	}
 }
